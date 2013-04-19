@@ -1,0 +1,66 @@
+\section{Censorship}
+The rate of the growth of Internet along with the amount of information present within its infrastructure, becomes a potential threat for the certain groups of people, governments and other national institutions.
+Users tend to share any kind of data on the Internet, and some of it can be harmful to the other users.
+The primary concerns related to the data present on the Internet are the hate-speech, pornography, piracy, etc.
+The bad information should be prevented, but this process must not lead to restricting the users from their right for freedom of speech.
+As it usually goes with potential flaws, prevention of the harmful data is being used as an excuse for limiting the freedom of speech. 
+
+Vast number of recent examples of Internet censorship used to limit the freedom of speech can be found in China \cite{canaves}, Libya \cite{dianotti2011} and many other countries. 
+This leads to defining a potential threat model that could affect the computer networks and limit the information flow between the users - a censorship threat model.
+
+In this paper, authors want to present how the censorship threat model can affect the computer networks, and how centralised and decentralised architectures deal with it.
+The easiest way to present that is through study of the most popular WWW social networking sites, like Facebook, Twitter and Google Plus as examples of centralised systems and try to introduce an efficient way for dealing with censorship in this types of network architecture.
+On the other side there are many applications on the Internet that rely on distributed architecture.
+Those are known as P2P (peer to peer) applications, and by studying them we can see how decentralised architecture deal with the censorship threat model.
+
+During the demonstrations in Egypt against their government and the president \cite{web:scialnetworkcriticalmass}, people were using the most popular networks for sharing information.
+In circumstances like this, it is vital to have a good communication, in order to organize the demonstrations and to gain on more masses. 
+Because people were using a centralised networking sites, like Facebook, Twitter, YouTube, and etc., it was very easy for the regime to track down their data and censure them.
+This is because in centralised systems like those mentioned, we have a central point called server. 
+
+In order to establish communication between each other, peers or the clients must first refer to the central point, in order to become aware of each other.
+The server in this case represents the central point, where every single bit of information must pass through it.
+In a system like this, the process of censorship is pretty straight forward - just inspect all the traffic that is coming in to the specific central point and going out from it, and filter the data that you do not want to be present in the network. 
+
+One possible solution to prevent censorship over your data is to use different algorithms for encrypting it.
+Yes, this is a way of protecting the integrity and privacy of your data, but there is no guarantee that this encrypted data will not be censored.
+If one client in this model is suspicious, it is easy to filter his encrypted data.
+Because all the data must go to the central point, and the infrastructure in which the data travel is usually in government property or they have a mechanism to gain access to it \cite{dianotti2011}, they can discard every suspicious packet on its way to the server.
+
+If there is too much of undesirable traffic into the system, it is not practical to filter all of the data coming from numerous suspicious sources, rather than that one can block the access to the central point.
+If the central point has being cut off the system, the clients can no longer communicate since they are not aware of each others presence, and the network is practically disabled - there is no data flow into the system.
+One particular example of this is that back in March 2011 Google has accused Chinese authorities for blocking the Google mail service and made it to look like the it was a problem with Gmail service.
+The story was released to public by one of the most prominent American daily newspapers, The New York Times.
+In the text there were official statements from Google.
+"There is no issue on our side; we have checked extensively", they said.
+"This is a government blockage, carefully designed to look like the problem is with Gmail." \cite{web:newyorktimes}
+
+Another weak point in this type of network architecture is centralised storage of the user data.
+All of the user data must be stored on the central point of the system in order to be shared or give access to it to the other users of the same system.
+This feature of the centralised systems is also affected by the censorship threat model, and there is still no efficient way for this kind of architecture to deal with this kind of threat.
+In contrast to the centralised network model we have the decentralised or distributed network architecture.
+As previously stated the most significant difference of this network architecture compared with the centralised one is the absence of a central point for supporting the communication with the clients. 
+
+In order to present how decentralised network architectures can potentially avoid the censorship threat model, we are going to discuss Freenet \cite{clarke2001} a typical pure peer-to-peer \cite{web:peertopeer} type of decentralised network architecture, which relies on anonymity.
+When it was revealed for the first time, its founders argued that the anonymity of the system provides a true freedom of speech.
+The core building units of this network architecture are equipotent peers.
+In order to be able to communicate with each other, the peers or in this case they are called "nodes" need to maintain local table with addresses to their neighbors.
+All of the nodes in the system have equal privileges, and therefore there is no need for a single central point.
+The biggest advantage of this kind of architectures in avoiding censorship threat model is the absence of a central point.
+This means that in the system, there is no longer a single point of failure or censorship.  
+
+As described in paper \cite{clarke2001}, the architecture of this application impose storing the data between the users.
+In the initial version of the application, the data was distributed across the system, but it still was stored in one piece.
+Even though the data is encrypted, because it is stored in one place there was a potential risk that this data could be decrypted.
+If the data were to be some sensitive information, its holder may be subjected to prosecution.
+For that purpose, multiple algorithms have been proposed in order to improve the robustness and resistance to censorship.
+One of the most popular one was proposed in Regine Endsuleit and Thilo Mie paper \cite{endsuleit2006}. 
+
+In their paper they proposed a new distributed way of storing the data across the system.
+Instead of the traditional way of storing the data in one place, now the data has been divided into small chunks, that are then distributed and stored among the clients.
+In addition to decentralised storing of the information, also there is a lot of redundancy in the system.
+A single chunk of information is stored on multiple clients.
+This means that a single chunk of information is available from many places.
+All these features are introduced into the network in order to increase the fault tolerance of the system to various threat models, among which is our censorship threat model.
+This implies that in order to retrieve some information, one must first find all the chunks and then try to reassemble them.
+Due to the decentralisation of the system, and distributed information among the peers, this network architecture with these characteristics is very hard to be censored.

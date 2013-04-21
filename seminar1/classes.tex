@@ -1,0 +1,66 @@
+\newpage
+\section{Classes}
+\subsection{What is implemented}
+In this chapter a thorough explanation of all classes and their role in the
+kwicPrototype application will be given. An UML class diagram can be viewed
+in the end of this report that shows the architecture on a class level. Chosen
+alternative to look at is alternative A, decomposition structure and the
+{\em is-a-submodule-of} relation \cite{book:bass2012}.
+
+The first trivial requirement is that no matter how input or output of information
+is handled there must be some kind of way to work with the data (lines of text)
+while adding features to the software e.g. some kind of storage of the data
+in memory in a List, HashMap or perhaps Array. To hide exactly how this is done
+in the kwicPrototype an interface for this was created, the "LineStorageInterface".
+In the kwicPrototype their is an implementation of this as "ListLineStorage" and
+the possiblity in the future to add other implementations if needed.
+
+After deciding how the lines were to be stored while doing different operations
+on it the next step were to decide on how to import the lines. Given as requirement
+for laboration 1 was that import and export to txt files was a must-have feature but
+the possiblity for future extensions to store in other formats was also required.
+Instead of separating import and export into different parts it was decided a
+common Input/Output interface would be a good choice. A future extension with
+support for a new file format would probably implement both import and export
+at the same time so it makes sense to keep that funtionality together. This
+common functionality was organised as "IOInterface" and txt implementation in
+"TxtFileIO".
+
+With both hiding of "data storage" and "input/output" functionality taken care of
+it was time to look at the algorithm to do circular shift and
+sorting the lines.
+
+A problem can usually be solved with several different algorithms.
+To be able to choose which algorithm to use, some requirements needs to be put
+on the software. Should performance/speed be of highest importance or perhaps
+disk space is a limitation?
+The chosen algorithm one day may be the wrong one next week when new requirements
+from a stakeholder are presented, it's apparent that this must be able to change
+in the future. The "CircularlyShiftedAlgorithmInterface" takes care of this and
+hides that functionality behind its method "compute". In kwicPrototype a prototype
+of this algorithm was implemented in "CSAPrototype".
+
+The last requirement in laboration 1 was to sort all lines. Sorting is a known and common
+problem for all software developers and sorting can be done in many ways. The
+actual sorting of lines is hidden in kwicPrototype behind the interface "SortLinesInterface".
+
+To summaries this section about kwicPrototype implementation the LineStorageInterface
+hides the functionality on how the lines are stored while running the application e.g. Lists or Arrays?
+The IOInterface hides the functionality on how import and export is handled, new file
+formats can be added as example. The CircuarlyShiftedAlgorithmInterface hides the
+shifting implementation and SortLinesInterface hides the sorting functionality.
+All these interfaces have at least one corresponding implementation which is a
+submodule of its interface.
+
+\subsection{What is not implemented}
+The current implementation imports the information from txt file and modifies
+that object as the program progresses. This can be a problem in the future
+if their is a need for keeping track of changes made or someone just want to keep
+the original object while performing the CSA algorithm as well as sorting on a
+clone.
+
+A solution to this could be to implement an abstract LineStorage that implements
+functionality such as "clone" and "equals". This would make it possible to clone
+imported rows as well as comparing different LineStorage object with each other.
+This functionality was not implemented in Laboration 1 as it was decided this would not
+be needed.

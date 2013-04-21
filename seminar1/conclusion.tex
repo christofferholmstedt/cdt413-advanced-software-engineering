@@ -1,0 +1,19 @@
+\section{My design choices}
+\subsection{Keeping the original rows}
+The current implementation imports the information from txt file and modifies
+that object as the program progresses. This can be a problem in the future
+if their is a need for keeping track of changes made or someone just want to keep
+the original object while performing the CSA algorithm as well as sorting on a
+clone.
+
+A solution to this could be to implement an abstract LineStorage that implements
+functionality such as "clone" and "equals". This would make it possible to clone
+imported rows as well as comparing different LineStorage object with each other.
+This functionality was not implemented in Laboration 1 as I decided this would not
+be needed.
+%\subsection{Saving to new format seamless}
+%The decomposition structures allows for a different output format than input
+%format. Though there is no good way of compying from one format to another even
+%if a new IO format were to be supported in the future. One way of supporting this
+%would be to implement an abstract implementation of IOkk
+%\cite{book:bass2012}
